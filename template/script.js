@@ -3,12 +3,17 @@ const REVERSE_BUTTON_MIN_LENGTH = 4;
 
 /**
  * Pure function: returns the reversed string.
- * Uses Array.from for correct handling of Unicode (e.g. emojis).
+ * Uses Intl.Segmenter (grapheme) when available so ZWJ emoji and combining marks stay intact; otherwise falls back to Array.from.
  * @param {string} str
  * @returns {string}
  */
 function reverseString(str) {
     if (typeof str !== 'string') return '';
+    if (typeof Intl !== 'undefined' && Intl.Segmenter) {
+        const segmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
+        const segments = [...segmenter.segment(str)].map(function (s) { return s.segment; });
+        return segments.reverse().join('');
+    }
     return Array.from(str).reverse().join('');
 }
 

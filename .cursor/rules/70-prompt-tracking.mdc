@@ -22,6 +22,8 @@ This rule is NOT optional.
 - Append each new prompt at the end of the file.
 - Do NOT overwrite previous prompts.
 - Preserve the exact original wording of the prompt.
+- Preserve the original wording of the prompt, except for mandatory redaction of secrets/sensitive data
+  (API keys, passwords, tokens, emails, phone numbers, personal identifiers). Use [REDACTED:<type>] markers.
 - Each prompt must include:
   - A timestamp (ISO 8601 format)
   - A clear separator between prompts
