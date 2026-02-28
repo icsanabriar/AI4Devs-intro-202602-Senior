@@ -1,0 +1,35 @@
+---
+description: "Frontend rules for the string reverser project"
+globs: ["**/*"]
+---
+
+# Prompt Tracking Rule
+
+## Purpose
+Ensure full traceability of all prompts used during development.
+
+## Mandatory Rule
+
+Every prompt entered in the chat MUST be saved in:
+
+template/prompts.md
+
+This rule is NOT optional.
+
+## Requirements
+
+- If the file does not exist, create it.
+- Append each new prompt at the end of the file.
+- Do NOT overwrite previous prompts.
+- Preserve the exact original wording of the prompt.
+- Each prompt must include:
+  - A timestamp (ISO 8601 format)
+  - A clear separator between prompts
+
+## Format
+
+Each entry must follow this structure:
+
+---
+
+### Prompt - YYYY-MM-DDTHH:MM:SS

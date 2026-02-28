@@ -1,0 +1,13 @@
+---
+description: "Frontend rules for the string reverser project"
+globs: ["template/index.html", "template/script.js"]
+---
+
+# Output Format Rule (for Cursor)
+
+When generating or updating code:
+- Provide final complete contents for:
+  - `index.html`
+  - `script.js`
+- Do not propose additional files.
+- Ensure the page runs by opening `index.html` in a browser.

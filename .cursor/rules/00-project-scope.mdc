@@ -1,0 +1,23 @@
+---
+description: "Frontend rules for the string reverser project"
+globs: ["template/index.html", "template/script.js"]
+---
+
+# Project Scope (String Reverser)
+
+## Goal
+Build a single web page that reverses an input string and displays the result.
+
+## Constraints
+- Use ONLY the provided seed files:
+  - `template/index.html`
+  - `template/script.js`
+- Do not add new files.
+- No frameworks, no external libraries.
+
+## Deliverable
+- A working UI with:
+  - text input
+  - "Reverse" button
+  - result area
+- JavaScript logic implemented in `script.js`.

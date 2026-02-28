@@ -1,0 +1,21 @@
+---
+description: "Frontend rules for the string reverser project"
+globs: ["**/*"]
+---
+
+# Testing Rules
+
+- The core logic MUST be testable.
+- `reverseString(str)` must remain a pure function.
+- Include basic unit tests inside `script.js` using simple assertion checks.
+- Do not use external testing frameworks.
+- Provide a small test runner function executed on load.
+
+Minimum required test cases:
+- "AI4Devs" -> "sveD4IA"
+- "" -> ""
+- "a" -> "a"
+- "hola mundo" -> "odnum aloh"
+- "😀a" -> "a😀"
+
+If any test fails, log a clear error in the console.

@@ -1,0 +1,16 @@
+---
+description: "Frontend rules for the string reverser project"
+globs: ["template/index.html", "template/script.js"]
+---
+
+# Code Quality Rules
+
+- Keep code short, readable, and intention-revealing.
+- Add brief comments only where they clarify intent (avoid noise).
+- Avoid overengineering:
+  - No classes
+  - No complex patterns
+- Prefer early returns for clarity.
+- Use consistent naming:
+  - `inputEl`, `buttonEl`, `resultEl`
+- Avoid magic IDs: define them once and reuse.
