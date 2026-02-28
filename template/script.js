@@ -45,33 +45,39 @@ function getDisplayResult(input) {
     const ID_FORM = 'reverse-form';
     const ID_BTN = 'reverse-btn';
 
+    /** Reads the current value from the string input element. @returns {string} */
     function getInputValue() {
         const inputEl = document.getElementById(ID_INPUT);
         return inputEl ? inputEl.value : '';
     }
 
+    /** Writes the reversed result into the result output element. @param {string} value */
     function setResult(value) {
         const resultEl = document.getElementById(ID_RESULT);
         if (resultEl) resultEl.textContent = value;
     }
 
+    /** Shows or hides the Reverse button. @param {boolean} visible */
     function setButtonVisibility(visible) {
         const buttonEl = document.getElementById(ID_BTN);
         if (buttonEl) buttonEl.hidden = !visible;
     }
 
+    /** Handles input event: updates result and button visibility from current input. */
     function handleInputChange() {
         const value = getInputValue();
         setResult(getDisplayResult(value));
         setButtonVisibility(shouldShowReverseButton(value.length));
     }
 
+    /** Handles form submit: updates result and button visibility (same as input handler). */
     function handleReverse() {
         const value = getInputValue();
         setResult(getDisplayResult(value));
         setButtonVisibility(shouldShowReverseButton(value.length));
     }
 
+    /** Binds form submit and input listeners and runs initial sync. */
     function init() {
         const formEl = document.getElementById(ID_FORM);
         const inputEl = document.getElementById(ID_INPUT);

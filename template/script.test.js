@@ -10,6 +10,12 @@ const {
     getDisplayResult,
 } = require('./script.js');
 
+/**
+ * Asserts that actual === expected; throws with label and values otherwise.
+ * @param {*} actual
+ * @param {*} expected
+ * @param {string} label
+ */
 function assertEqual(actual, expected, label) {
     if (actual !== expected) {
         throw new Error(
@@ -18,6 +24,12 @@ function assertEqual(actual, expected, label) {
     }
 }
 
+/**
+ * Asserts that actual === expected (strict); throws with label and values otherwise.
+ * @param {*} actual
+ * @param {*} expected
+ * @param {string} label
+ */
 function assertStrictEqual(actual, expected, label) {
     if (actual !== expected) {
         throw new Error(
@@ -26,6 +38,7 @@ function assertStrictEqual(actual, expected, label) {
     }
 }
 
+/** Runs unit tests for reverseString (including fallback and non-string input). */
 function runReverseStringTests() {
     const cases = [
         { input: 'AI4Devs', expected: 'sveD4IA', label: 'AI4Devs → sveD4IA' },
@@ -55,6 +68,7 @@ function runReverseStringTests() {
     }
 }
 
+/** Runs unit tests for shouldShowReverseButton (hidden ≤3, visible >3, edge cases). */
 function runButtonVisibilityTests() {
     const hiddenCases = [0, 1, 2, 3];
     for (const length of hiddenCases) {
@@ -72,6 +86,7 @@ function runButtonVisibilityTests() {
     assertStrictEqual(shouldShowReverseButton(NaN), false, 'Button visibility: NaN → false');
 }
 
+/** Runs unit tests for getDisplayResult (real-time display value and non-string input). */
 function runRealTimeBehaviorTests() {
     const cases = [
         { input: 'test', expected: 'tset', label: 'Real-time: "test" → "tset"' },
@@ -89,6 +104,7 @@ function runRealTimeBehaviorTests() {
     assertEqual(getDisplayResult(42), '', 'getDisplayResult(non-string) → ""');
 }
 
+/** Runs all unit test suites and logs success. */
 function runTests() {
     runReverseStringTests();
     runButtonVisibilityTests();
