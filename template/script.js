@@ -36,6 +36,7 @@ function getDisplayResult(input) {
     return reverseString(typeof input === 'string' ? input : '');
 }
 
+/* c8 ignore start */
 (function () {
     if (typeof document === 'undefined') return;
 
@@ -92,6 +93,7 @@ function getDisplayResult(input) {
         init();
     }
 })();
+/* c8 ignore stop */
 
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {

@@ -213,3 +213,56 @@ Each file must be clearly separated using:
 ===== template/filename =====
 
 The task is incomplete if any required file is missing.
+
+---
+
+### Prompt - 2026-02-28T16:00:00
+
+You are an expert frontend developer working inside a project governed by strict Cursor Project Rules.
+
+You MUST comply with all rules defined under `.cursor/rules/`.
+
+Goal: Ensure unit test coverage is >= 90%. If current coverage is below 90%, add/extend test cases to exceed 90% without modifying production behavior.
+
+────────────────────────────
+What to do
+────────────────────────────
+
+1) Identify the current test runner and coverage tooling used by this repo:
+   - Inspect package.json scripts (e.g., test, test:coverage)
+   - Inspect existing config files if present (jest/vitest/c8/nyc)
+   - If coverage is not configured, add the minimal configuration needed using the existing tooling already present in the repo (do not introduce new dependencies unless absolutely required and allowed by project rules).
+
+2) Run tests WITH coverage and record the result:
+   - Execute the appropriate command for coverage.
+   - Capture current overall coverage percentages (lines/branches/functions/statements as available).
+
+3) If overall coverage is < 90%:
+   - Add new unit tests and/or extend existing ones to raise coverage above 90%.
+   - Prefer meaningful tests over trivial lines-coverage padding.
+   - Target uncovered branches and edge cases (use the coverage report to locate gaps).
+   - Keep tests isolated from production code; do not move tests into script.js.
+   - Do not change production behavior; only adjust tests unless a bug is revealed (if a bug is revealed, fix it and add a regression test).
+
+4) Re-run coverage until overall coverage is >= 90%.
+
+────────────────────────────
+Constraints
+────────────────────────────
+- Do not create unnecessary files.
+- Modify only what is needed to reach >= 90% coverage.
+- Keep code simple and aligned with project rules.
+
+────────────────────────────
+Output Requirements
+────────────────────────────
+
+Return:
+1) The command used to run coverage and the final coverage summary (percentages).
+2) The FULL updated content of any files changed (most likely template/script.test.js and possibly config/scripts if required).
+3) The FULL updated content of template/prompts.md.
+
+Each file must be clearly separated using:
+===== path/to/file =====
+
+The task is incomplete if coverage is not >= 90% or if required files are missing.

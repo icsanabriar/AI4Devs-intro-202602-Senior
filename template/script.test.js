@@ -39,6 +39,20 @@ function runReverseStringTests() {
         const actual = reverseString(input);
         assertEqual(actual, expected, label);
     }
+
+    assertEqual(reverseString(null), '', 'reverseString(non-string) → ""');
+    assertEqual(reverseString(undefined), '', 'reverseString(undefined) → ""');
+
+    const hadSegmenter = typeof Intl !== 'undefined' && Intl.Segmenter;
+    if (hadSegmenter) {
+        const Segmenter = Intl.Segmenter;
+        Intl.Segmenter = undefined;
+        try {
+            assertEqual(reverseString('xy'), 'yx', 'reverseString fallback (no Segmenter) → "yx"');
+        } finally {
+            Intl.Segmenter = Segmenter;
+        }
+    }
 }
 
 function runButtonVisibilityTests() {
@@ -53,6 +67,9 @@ function runButtonVisibilityTests() {
         const actual = shouldShowReverseButton(length);
         assertStrictEqual(actual, true, `Button visibility: visible when length = ${length}`);
     }
+
+    assertStrictEqual(shouldShowReverseButton(undefined), false, 'Button visibility: undefined → false');
+    assertStrictEqual(shouldShowReverseButton(NaN), false, 'Button visibility: NaN → false');
 }
 
 function runRealTimeBehaviorTests() {
@@ -67,6 +84,9 @@ function runRealTimeBehaviorTests() {
         const actual = getDisplayResult(input);
         assertEqual(actual, expected, label);
     }
+
+    assertEqual(getDisplayResult(null), '', 'getDisplayResult(null) → ""');
+    assertEqual(getDisplayResult(42), '', 'getDisplayResult(non-string) → ""');
 }
 
 function runTests() {

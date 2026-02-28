@@ -21,12 +21,11 @@ This rule is NOT optional.
 - If the file does not exist, create it.
 - Append each new prompt at the end of the file.
 - Do NOT overwrite previous prompts.
-- Preserve the exact original wording of the prompt.
-- Preserve the original wording of the prompt, except for mandatory redaction of secrets/sensitive data
-  (API keys, passwords, tokens, emails, phone numbers, personal identifiers). Use [REDACTED:<type>] markers.
+- Preserve the original wording of the prompt, with one mandatory exception: **sensitive data MUST be redacted before storage** (e.g. secrets, credentials, personal identifying information). When redacting, use a marker such as `[REDACTED:<type>]` and record **redaction metadata**: a documented redaction reason and a redaction timestamp in ISO 8601 format. Implementations (and audits) MUST be able to detect when redaction occurred without storing the secret—e.g. by supporting a `redacted_flag` and `redaction_metadata` (reason, timestamp) on the stored entry.
 - Each prompt must include:
   - A timestamp (ISO 8601 format)
   - A clear separator between prompts
+  - If redaction was applied: redaction reason and redaction timestamp (ISO 8601), or equivalent `redaction_metadata` so the entry can be flagged as redacted
 
 ## Format
 
@@ -35,3 +34,5 @@ Each entry must follow this structure:
 ---
 
 ### Prompt - YYYY-MM-DDTHH:MM:SS
+
+(Optional, when redaction was applied: include `redacted_flag` and `redaction_metadata`—e.g. reason and ISO 8601 timestamp—so audits can detect redaction without exposing the original secret.)
