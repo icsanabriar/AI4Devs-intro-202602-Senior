@@ -1,0 +1,17 @@
+---
+description: "Frontend rules for the string reverser project"
+globs: ["template/index.html", "template/script.js"]
+---
+
+# JavaScript Structure Rules
+
+- All JS must live in `script.js`.
+- Use a pure function:
+  - `reverseString(str)` returns the reversed string.
+- Keep DOM code separate from pure logic:
+  - One function reads input
+  - One function writes output
+- Use ES6+.
+- Add event listeners after DOM is ready (e.g., `DOMContentLoaded`).
+- Prefer `const` and `let`, avoid `var`.
+- No global variables unless unavoidable; wrap in an IIFE or module-style pattern if needed.

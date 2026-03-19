@@ -1,0 +1,14 @@
+---
+description: "Frontend rules for the string reverser project"
+globs: ["template/index.html", "template/script.js"]
+---
+
+# HTML & Accessibility Rules
+
+- Use semantic HTML: `<main>`, `<label>`, `<input>`, `<button>`, result container.
+- Always pair inputs with `<label for="...">`.
+- Ensure keyboard usability:
+  - Button is focusable
+  - Enter key should submit/reverse if placed in a `<form>`.
+- Display result in an element with `aria-live="polite"` so screen readers announce updates.
+- Keep HTML minimal. No inline JS.

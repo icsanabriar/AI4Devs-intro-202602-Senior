@@ -1,0 +1,13 @@
+---
+description: "Frontend rules for the string reverser project"
+globs: ["template/index.html", "template/script.js"]
+---
+
+# Edge Cases & UX Rules
+
+- Handle empty input gracefully:
+  - Show empty result (no errors).
+- Preserve all characters exactly (including spaces, emojis, punctuation).
+- Do not trim unless explicitly requested.
+- If input is very long, solution must still work efficiently.
+- Keep UI feedback clear and immediate.
